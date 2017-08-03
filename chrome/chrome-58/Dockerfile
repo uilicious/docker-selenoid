@@ -1,5 +1,6 @@
 FROM selenoid/chrome:58.0
 
+# Using root user for installation
 USER root
 
 # Listing language pack used for installation (for refrence)
@@ -11,4 +12,5 @@ RUN apt-get install -y $(apt-cache --names-only search ^language-pack-* | awk '{
 # Install any needed font (if needed)
 RUN apt-get install -y fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
 
-USER selenoid
+# Reverting back to selenium user
+USER selenium
