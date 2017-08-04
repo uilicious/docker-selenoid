@@ -12,5 +12,5 @@ RUN apt-get install -y $(apt-cache --names-only search ^language-pack-* | awk '{
 # Install any needed font (if needed)
 RUN apt-get install -y fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
 
-# Reverting back to selenium user
-USER selenium
+# # Reverting back to selenium user
+# USER selenium
