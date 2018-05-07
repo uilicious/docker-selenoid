@@ -13,7 +13,7 @@ ENV BROWSER_JSON ""
 #
 # Prepares the selenoid file runner script
 #
-RUN echo '#!/bin/bash'                                                > /entrypoint.sh && \
+RUN echo '#!/bin/sh'                                                > /entrypoint.sh && \
 	echo ''                                                           >> /entrypoint.sh && \
 	echo 'if [ -n "$BROWSER_JSON" ]; then '                           >> /entrypoint.sh && \
 	echo '   echo "###"'                                              >> /entrypoint.sh && \
