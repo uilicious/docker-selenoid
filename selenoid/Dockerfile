@@ -13,17 +13,17 @@ ENV BROWSER_JSON ""
 #
 # Prepares the selenoid file runner script
 #
-RUN echo '#!/bin/bash'                                                > /entrypoint/file-runner.sh && \
-	echo ''                                                           >> /entrypoint/file-runner.sh && \
-	echo 'if [ -n "$BROWSER_JSON" ]; then '                           >> /entrypoint/file-runner.sh && \
-	echo '   echo "###"'                                              >> /entrypoint/file-runner.sh && \
-	echo '   echo "### using browser_json"'                           >> /entrypoint/file-runner.sh && \
-	echo '   echo "###"'                                              >> /entrypoint/file-runner.sh && \
-	echo '   mkdir -p /etc/selenoid/;'                                >> /entrypoint/file-runner.sh && \
-	echo '   echo "$BROWSER_JSON" > /etc/selenoid/browsers.json'      >> /entrypoint/file-runner.sh && \
-	echo 'fi '                                                        >> /entrypoint/file-runner.sh && \
-	echo 'exec "$@"'                                                  >> /entrypoint/file-runner.sh && \
-	chmod +x /entrypoint/file-runner.sh;
+RUN echo '#!/bin/bash'                                                > /entrypoint.sh && \
+	echo ''                                                           >> /entrypoint.sh && \
+	echo 'if [ -n "$BROWSER_JSON" ]; then '                           >> /entrypoint.sh && \
+	echo '   echo "###"'                                              >> /entrypoint.sh && \
+	echo '   echo "### using browser_json"'                           >> /entrypoint.sh && \
+	echo '   echo "###"'                                              >> /entrypoint.sh && \
+	echo '   mkdir -p /etc/selenoid/;'                                >> /entrypoint.sh && \
+	echo '   echo "$BROWSER_JSON" > /etc/selenoid/browsers.json'      >> /entrypoint.sh && \
+	echo 'fi '                                                        >> /entrypoint.sh && \
+	echo 'exec "$@"'                                                  >> /entrypoint.sh && \
+	chmod +x /entrypoint.sh;
 
 
-ENTRYPOINT ["/entrypoint/file-runner.sh", /usr/bin/selenoid", "-listen", ":4444", "-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video/"]
+ENTRYPOINT ["/entrypoint.sh", "/usr/bin/selenoid", "-listen", ":4444", "-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video/"]
