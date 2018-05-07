@@ -7,7 +7,7 @@ FROM aerokube/selenoid:1.3.4
 #
 # File data for which selenoid would use
 #
-ENV BROWSER_JSON ""
+ENV BROWSER_JSON '{ "chrome": { "default": "63.0", "versions": { "63.0": { "image": "uilicious/selenoid-chrome:63.0", "port": "4444", "path": "/", "tmpfs": { "/tmp": "size=2048m" } } } }, "firefox": { "default": "57.0", "versions": { "57.0": { "image": "uilicious/selenoid-firefox:57.0", "port": "4444", "path": "/wd/hub", "tmpfs": { "/tmp": "size=2048m" } } } } }'
 
 
 #
@@ -26,4 +26,4 @@ RUN echo '#!/bin/sh'                                                > /entrypoin
 	chmod +x /entrypoint.sh;
 
 
-ENTRYPOINT ["/entrypoint.sh", "/usr/bin/selenoid", "-listen", ":4444", "-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video/"]
+ENTRYPOINT ["/entrypoint.sh", "/usr/bin/selenoid", "-listen", ":4444", "-conf", "/etc/selenoid/browsers.json"]
