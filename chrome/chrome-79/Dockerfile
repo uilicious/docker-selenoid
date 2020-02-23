@@ -12,5 +12,12 @@ RUN apt-get update && apt-get install -y $(apt-cache --names-only search ^langua
 # Install any needed font (if needed)
 RUN apt-get update && apt-get install -y fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-mincho fonts-ipafont-gothic fonts-unfonts-core
 
+# Install emoji font
+RUN apt-get update && apt-get install -y fonts-noto-color-emoji
+
+# Copy over the entrypoint script
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh && chmod 0755 /entrypoint.sh
+
 # Reverting back to selenium user
 USER selenium
