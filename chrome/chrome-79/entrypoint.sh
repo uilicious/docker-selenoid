@@ -5,7 +5,7 @@ DISPLAY_NUM=99
 export DISPLAY=":$DISPLAY_NUM"
 
 QUIET=${QUIET:-""}
-DRIVER_ARGS=${DRIVER_ARGS:=""}
+DRIVER_ARGS=${DRIVER_ARGS:-""}
 if [ -z "$QUIET" ]; then
     DRIVER_ARGS="${DRIVER_ARGS} --verbose"
 fi
