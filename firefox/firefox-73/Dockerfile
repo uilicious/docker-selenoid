@@ -1,4 +1,4 @@
-FROM selenoid/firefox:72.0
+FROM selenoid/firefox:73.0
 
 # Using root user for installation
 USER root

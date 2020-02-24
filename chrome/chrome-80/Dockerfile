@@ -1,4 +1,4 @@
-FROM selenoid/firefox:72.0
+FROM selenoid/chrome:80.0
 
 # Using root user for installation
 USER root
@@ -15,5 +15,9 @@ RUN apt-get update && apt-get install -y fonts-arphic-ukai fonts-arphic-uming fo
 # Install emoji font
 RUN apt-get update && apt-get install -y fonts-noto-color-emoji
 
-# # Reverting back to selenium user
-# USER selenium
+# Copy over the entrypoint script
+COPY ./entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh && chmod 0755 /entrypoint.sh
+
+# Reverting back to selenium user
+USER selenium
