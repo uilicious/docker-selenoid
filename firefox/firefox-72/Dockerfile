@@ -15,5 +15,5 @@ RUN apt-get update && apt-get install -y fonts-arphic-ukai fonts-arphic-uming fo
 # Install emoji font
 RUN apt-get update && apt-get install -y fonts-noto-color-emoji
 
-# # Reverting back to selenium user
-# USER selenium
+# Reverting back to selenium user
+USER selenium
